@@ -363,7 +363,6 @@ type OrderStatus struct {
 }
 
 // ID contains the TWS order "id", which was nominated when the order was placed.
-func (o *OrderStatus) ID() int64               { return o.id }
 func (o *OrderStatus) code() IncomingMessageID { return mOrderStatus }
 func (o *OrderStatus) read(b *bufio.Reader) (err error) {
 	if o.id, err = readInt(b); err != nil {
@@ -551,7 +550,6 @@ type OpenOrder struct {
 }
 
 // ID contains the TWS "orderId", which was nominated when the order was placed.
-func (o *OpenOrder) ID() int64               { return o.Order.OrderID }
 func (o *OpenOrder) code() IncomingMessageID { return mOpenOrder }
 func (o *OpenOrder) read(b *bufio.Reader) (err error) {
 	if o.Order.OrderID, err = readInt(b); err != nil {
